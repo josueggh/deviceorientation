@@ -20,8 +20,8 @@ class App {
                 });
             }
             window.addEventListener('deviceorientation', (event) => {
-                let r = this.gToc(event.alpha), g = this.gToc(event.beta), b = this.gToc(event.gamma);
-                firebase.database().ref("users/" + this.uid).set({ r: r, g: g, b: b });
+                let r = this.gToc(event.alpha), g = this.gToc(event.beta), b = this.gToc(event.gamma), m = new Date().getTime();
+                firebase.database().ref("users/" + this.uid).set({ r: r, g: g, b: b, m: m });
                 document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
             }, false);
         }

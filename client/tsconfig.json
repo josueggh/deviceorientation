@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "module": "commonjs",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true
+    "target": "es6",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "noEmitOnError": true
   },
-  "files": [
-    "capture.ts"
+  "exclude": [
+    "node_modules"
   ]
 }

@@ -3,6 +3,7 @@ const firebase = require("firebase");
 class App {
     constructor() {
         this.convertion = 255 / 360;
+        this.uid = localStorage.getItem("uid") || null;
         this.firebase_config = {
             apiKey: "AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk",
             authDomain: "devicemotion.firebaseapp.com",
@@ -10,11 +11,14 @@ class App {
         };
         if (window.DeviceMotionEvent) {
             firebase.initializeApp(this.firebase_config);
-            let provider = new firebase.auth.GoogleAuthProvider();
-            provider.addScope('https://www.googleapis.com/auth/plus.login');
-            firebase.auth().signInWithPopup(provider).then((result) => {
-                this.uid = result.user.uid;
-            });
+            if (!this.uid) {
+                let provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/plus.login');
+                firebase.auth().signInWithPopup(provider).then((result) => {
+                    localStorage.setItem("uid", result.user.uid);
+                    this.uid = result.user.uid;
+                });
+            }
             window.addEventListener('deviceorientation', (event) => {
                 let r = this.gToc(event.alpha), g = this.gToc(event.beta), b = this.gToc(event.gamma);
                 firebase.database().ref("users/" + this.uid).set({ r: r, g: g, b: b });

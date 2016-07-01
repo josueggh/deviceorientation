@@ -2,7 +2,7 @@ import * as firebase from "firebase";
 
 class App{
   convertion: number = 255/360;
-  uid:string;
+  uid:string = localStorage.getItem("uid") || null;
 
   firebase_config: any = {
     apiKey: "AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk",
@@ -14,12 +14,15 @@ class App{
     if( (<any>window).DeviceMotionEvent) {
       firebase.initializeApp(this.firebase_config);
 
-      let provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('https://www.googleapis.com/auth/plus.login');
+      if( !this.uid ) {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/plus.login');
 
-      firebase.auth().signInWithPopup(provider).then( (result) => {
-        this.uid = result.user.uid;
-      });
+        firebase.auth().signInWithPopup(provider).then((result) => {
+          localStorage.setItem("uid", result.user.uid);
+          this.uid = result.user.uid;
+        });
+      }
 
       window.addEventListener('deviceorientation', (event) => {
         let r = this.gToc(event.alpha),

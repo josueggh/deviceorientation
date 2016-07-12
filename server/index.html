@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Device Orientation</title>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://npmcdn.com/systemjs@0.19.31/dist/system.js"></script>
+  <style>
+    body{
+       background: white;
+     }
+    div{
+      height:100px;
+      float:left;
+      width: 100px;
+      border:1px solid #EEEEEE;
+      -webkit-transition: background 0.1s;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  System.config({
+    "packages":{
+      "dist":{
+        "defaultExtension":"js",
+        "main":"main"
+      }
+    },
+    "map":{
+      "firebase":"https://npmcdn.com/firebase@3.1.0/firebase-browser.js",
+    }
+  });
+  System.import("dist");
+</script>
+</body>
+</html>

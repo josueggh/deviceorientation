@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://gist.githubusercontent.com/cdcarson/28399c50b02bf6c507fbf5b7b30daa31/raw/fa089d231ca4253d4715f8161efc6af74c972dfa/firebase-sdk-3-typings.d.ts",
+    "raw": "https://gist.githubusercontent.com/cdcarson/28399c50b02bf6c507fbf5b7b30daa31/raw/fa089d231ca4253d4715f8161efc6af74c972dfa/firebase-sdk-3-typings.d.ts",
+    "typings": "https://gist.githubusercontent.com/cdcarson/28399c50b02bf6c507fbf5b7b30daa31/raw/fa089d231ca4253d4715f8161efc6af74c972dfa/firebase-sdk-3-typings.d.ts"
+  }
+}

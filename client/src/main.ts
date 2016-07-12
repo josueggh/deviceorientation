@@ -1,13 +1,13 @@
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 
 class App{
   convertion: number = 255/360;
-  uid:string = localStorage.getItem("uid") || null;
+  uid:string = localStorage.getItem('uid') || null;
 
   firebase_config: any = {
-    apiKey: "AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk",
-    authDomain: "devicemotion.firebaseapp.com",
-    databaseURL: "https://devicemotion.firebaseio.com",
+    apiKey: 'AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk',
+    authDomain: 'devicemotion.firebaseapp.com',
+    databaseURL: 'https://devicemotion.firebaseio.com'
   };
 
   constructor(){
@@ -19,7 +19,7 @@ class App{
         provider.addScope('https://www.googleapis.com/auth/plus.login');
 
         firebase.auth().signInWithPopup(provider).then((result) => {
-          localStorage.setItem("uid", result.user.uid);
+          localStorage.setItem('uid', result.user.uid);
           this.uid = result.user.uid;
         });
       }
@@ -30,9 +30,11 @@ class App{
             b = this.gToc(event.gamma),
             m = new Date().getTime();
 
-        firebase.database().ref("users/"+this.uid).set({r,g,b,m});
-        document.getElementsByTagName('body')[0].style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+        firebase.database().ref(`users/${this.uid}`).set({r,g,b,m});
+        document.getElementsByTagName('body')[0].style.backgroundColor = `rgb(${r},${g},${b})`;
       }, false);
+
+      firebase.database().ref(`users/${this.uid}`).onDisconnect().remove();
     }
     setTimeout( function(){ document.getElementById('instructions').remove() } , 10000);
   }

@@ -5,9 +5,9 @@ class App{
   uid:string = localStorage.getItem('uid') || null;
 
   firebase_config: any = {
-    apiKey: 'AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk',
-    authDomain: 'devicemotion.firebaseapp.com',
-    databaseURL: 'https://devicemotion.firebaseio.com'
+    apiKey: '<YOUR API KEY>',
+    authDomain: '<YOUR AUTH DOMAIN>',
+    databaseURL: '<YOUR DATABASE URL>'
   };
 
   constructor(){

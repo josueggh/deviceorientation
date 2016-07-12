@@ -3,9 +3,9 @@ var App = (function () {
     function App() {
         var _this = this;
         this.firebase_config = {
-            apiKey: 'AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk',
-            authDomain: 'devicemotion.firebaseapp.com',
-            databaseURL: 'https://devicemotion.firebaseio.com'
+            apiKey: '<YOUR API KEY>',
+            authDomain: '<YOUR AUTH DOMAIN>',
+            databaseURL: '<YOUR DATABASE URL>'
         };
         firebase.initializeApp(this.firebase_config);
         var ref = firebase.database().ref('users');

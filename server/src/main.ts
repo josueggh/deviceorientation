@@ -2,9 +2,9 @@ import * as firebase from 'firebase';
 
 class App{
   firebase_config: any = {
-    apiKey: 'AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk',
-    authDomain: 'devicemotion.firebaseapp.com',
-    databaseURL: 'https://devicemotion.firebaseio.com'
+    apiKey: '<YOUR API KEY>',
+    authDomain: '<YOUR AUTH DOMAIN>',
+    databaseURL: '<YOUR DATABASE URL>'
   };
 
   constructor(){
@@ -17,8 +17,11 @@ class App{
     });
 
     ref.on('child_added', (dataSnapshot:any) => {
-      console.log('create', dataSnapshot.key);
       this.createElement(dataSnapshot.key, dataSnapshot.val());
+    });
+
+    ref.on('child_removed', (dataSnapshot:any) => {
+      document.getElementById(dataSnapshot.key).remove();
     });
   }
 

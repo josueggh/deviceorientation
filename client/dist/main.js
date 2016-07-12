@@ -4,9 +4,9 @@ class App {
         this.convertion = 255 / 360;
         this.uid = localStorage.getItem('uid') || null;
         this.firebase_config = {
-            apiKey: 'AIzaSyA71ebuJR4ejU1BWAOuqxDBsZjGJT2HNXk',
-            authDomain: 'devicemotion.firebaseapp.com',
-            databaseURL: 'https://devicemotion.firebaseio.com'
+            apiKey: '<YOUR API KEY>',
+            authDomain: '<YOUR AUTH DOMAIN>',
+            databaseURL: '<YOUR DATABASE URL>'
         };
         if (window.DeviceMotionEvent) {
             firebase.initializeApp(this.firebase_config);

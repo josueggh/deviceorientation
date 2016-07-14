@@ -11,7 +11,7 @@ class App{
   };
 
   constructor(){
-    if( (<any>window).DeviceMotionEvent) {
+    if( (<any>window).DeviceOrientationEvent) {
       firebase.initializeApp(this.firebase_config);
 
       if( !this.uid ) {
